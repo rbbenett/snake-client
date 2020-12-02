@@ -2,7 +2,7 @@ const net = require('net');
 const name = 'RBT'
 const connect = function() {
   const conn = net.createConnection({ 
-    host: '192.168.0.139',
+    host: '135.23.222.131',
     port: 50542
   });
   
@@ -13,13 +13,20 @@ const connect = function() {
   });
 
   conn.on('connect', () => {
-    conn.write('Successfully connected to game server');
+    console.log('Successfully connected to game server');
   });
 
-  conn.on('connect', () => {
-    conn.write(`NAME: ${name}`)
-  })
+  conn.on('connect', (data) => {
+    setTimeout(() => {
+      conn.write(`Name: RBT`, data),  
+        //setInterval(() => {
+          //conn.write("Move: up", data)}, 50), 
+          1000});
+      });
+  };
+   
 
-};
+  
+
 
 module.exports = {connect};
