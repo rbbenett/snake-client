@@ -1,18 +1,25 @@
 const net = require('net');
-
-const connect = (ip, port) => {
+const name = 'RBT'
+const connect = function() {
   const conn = net.createConnection({ 
-    host: ip = '135.23.222.131',
-    port: port = 50542
+    host: '192.168.0.139',
+    port: 50542
   });
   
   conn.setEncoding('utf8'); 
 
-  conn.on('data', data => {
-    console.log(`you ded cuz you idled`);
+  conn.on('data', (data) => {
+    console.log('Server says: ', data);
   });
 
-  return conn;
+  conn.on('connect', () => {
+    conn.write('Successfully connected to game server');
+  });
+
+  conn.on('connect', () => {
+    conn.write(`NAME: ${name}`)
+  })
+
 };
 
-module.export = { connect };
+module.exports = {connect};
