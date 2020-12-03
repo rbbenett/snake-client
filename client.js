@@ -23,10 +23,10 @@ const connect = function() {
           //conn.write("Move: up", data)}, 50), 
           1000});
       });
+      return conn;
   };
    
 
-  
 
 
 module.exports = {connect};
